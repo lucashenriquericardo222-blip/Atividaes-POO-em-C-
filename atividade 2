@@ -1,1 +1,46 @@
+using System;
 
+public class Calculo
+{
+    public static void Main()
+    {
+        Console.Write("---------------------Menu--------------------\n");
+        Console.Write("Escolha opção 1 para Parse e 2 para TryParse: ");
+        string opcao = Console.ReadLine();
+
+        double idade = 0;
+
+        if (opcao == "1")
+        {
+            Console.Write("Digite sua idade: ");
+
+            try
+            {
+                idade = double.Parse(Console.ReadLine());
+                Console.WriteLine("Idade válida: " + idade);
+            }
+            catch (FormatException)
+            {
+                Console.WriteLine("Erro: você não digitou um número válido!");
+            }
+        }
+        else if (opcao == "2")
+        {
+            Console.Write("Digite sua idade: ");
+            string entrada = Console.ReadLine();
+
+            if (double.TryParse(entrada, out idade))
+            {
+                Console.WriteLine("Idade válida: " + idade);
+            }
+            else
+            {
+                Console.WriteLine("Erro: você não digitou um número válido!");
+            }
+        }
+        else
+        {
+            Console.WriteLine("Opção inválida!");
+        }
+    }
+}
