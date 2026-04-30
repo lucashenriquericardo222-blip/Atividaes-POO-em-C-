@@ -1,1 +1,73 @@
+public class Calculo
+{
+    public static void Main()
+    {
+        double resultado = 0;
+
+        try
+        {
+
+            Console.Write("Número 1: ");
+            double n1 = double.Parse(Console.ReadLine());
+
+            Console.Write("Número 2: ");
+            double n2 = double.Parse(Console.ReadLine());
+
+            Console.Write("Escolha a operação desejada (+ ou - ou * ou /): ");
+            string op = Console.ReadLine();
+
+            if (op == "+")
+            {
+                resultado = n1 + n2;
+            }
+            else if (op == "-")
+            {
+                resultado = n1 - n2;
+            }
+            else if (op == "/")
+            {
+                if (n2 == 0)
+                    throw new DivideByZeroException();
+
+                resultado = n1 / n2;
+            }
+            else if (op == "*")
+            {
+                resultado = n1 * n2;
+            }
+
+            else if(op != "+" && op != "-" && op != "/" && op != "*") {
+                Console.WriteLine("Nenhuma Operação escolhida conforme Solicitado")
+
+            }
+
+            Console.WriteLine($"Resultado: {resultado}");
+
+
+
+        }
+
+        catch (FormatException)
+        {
+            Console.WriteLine("Erro");
+        }
+
+        catch (DivideByZeroException)
+        {
+            Console.WriteLine("Não existe divisão por 0");
+        }
+
+        catch (Exception)
+        {
+            Console.WriteLine("Qualquer outro erro");
+        }
+
+        finally
+        {
+            Console.WriteLine("Operação finalizada.");
+        }
+    }
+
+}
+
 
